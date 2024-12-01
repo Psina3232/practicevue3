@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Канбан доска</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="toggleAllColumns">{{ areAllCollapsed ? 'Развернуть все' : 'Свернуть все' }}</button>
+        <div class="columns">
+            <div class="column" v-for="(column, columnIndex) in columns" :key="columnIndex">
+                <h2>
+                    {{ column.name }}
+                    <button @click="toggleColumn(columnIndex)">
+                        {{ column.isCollapsed ? 'Развернуть' : 'Свернуть' }}
+                    </button>
+                </h2>
+                <div v-show="!column.isCollapsed">
+                    <kanban-card
+                    v-for="(card, cardIndex) in column.cards"
+                    :key="cardIndex"
+                    :card="card"
+                    :column-index="columnIndex"
+                    :card-index="cardIndex"
+                    @edit-card="editCardOnBoard"
+                    @delete-card="deleteCard"
+                    @move-to-in-progress="moveToInProgress"
+                    @move-to-testing="moveToTesting"
+                    @move-to-done="moveToDone"
+                    @return-to-in-progress="returnToInProgress"
+                ></kanban-card>
+                <form v-if="columnIndex === 0" @submit.prevent="addCard(columnIndex)">
+                    <h3>Новая задача</h3>
+                    <input v-model="newCard.title" placeholder="Заголовок" required />
+                    <input v-model="newCard.description" placeholder="Описание" required />
+                    <input type="date" v-model="newCard.deadline" placeholder="Дедлайн" required />
+                    <label>
+                        Приоритет:
+                        <select v-model="newCard.priority" required>
+                            <option value="1">Высокий</option>
+                            <option value="2">Средний</option>
+                            <option value="3">Низкий</option>
+                        </select>
+                    </label>
+                    <button type="submit">Добавить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

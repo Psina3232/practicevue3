@@ -1,0 +1,97 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #6bb2d3;
+}
+
+#app {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.columns{
+    display: flex;
+}
+
+.column {
+    width: 350px;
+    flex: 1;
+    border: 1px solid #c9c9c9;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 0 10px;
+    background-color: #ffffff;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.new-card-form, .card-actions {
+    margin-top: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-date {
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+}
+
+.card-description {
+    margin-top: 8px;
+    color: rgb(0, 0, 0);
+}
+
+.card-deadline {
+    margin-top: 8px;
+    color: #000000;
+}
+
+input, textarea, button {
+    margin: 5px 0;
+}
+
+.completed-on-time {
+    background-color: #8ac878;
+}
+
+.overdue {
+    background-color: #fa786a;
+}
+
+.deadline-status {
+    border: 2px solid #3498db; 
+}
+
+input{
+    height: 30px;
+
+    border-radius: 25px;
+    border: 1px solid #c9c9c9;
+}
+
+button{
+    height: 30px;
+    border: 1px solid #c9c9c9;
+    border-radius: 25px;
+}
+
+h2{
+    text-align: center;
+}
+
+h3{
+    padding-top: 20px;
+    text-align: center;
+}
+
+
